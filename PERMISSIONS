@@ -1,0 +1,47 @@
+#!/bin/bash
+
+echo "==CHANGE THE PERMISSIONS OF FILES OR FOLDERS IN CURRENT DIR=="
+echo
+echo "Your current directory is $(pwd)"
+echo
+echo "Are you changing the permissions FILES to FOLDERS or BOTH ?"
+echo
+echo "1)Files - 644"
+echo "2)Folders - 755"
+echo "3)Both"
+echo
+echo "=================="
+echo -n "Your choice: "
+
+
+read USER_CHOICE
+
+if [ $USER_CHOICE -lt 1 ] || [ $USER_CHOICE -gt 3 ] ; then
+echo "You MUST use a valid option (1 / 2 / 3)"
+echo "Re-run the script and use it properly"
+exit
+fi
+
+if [ $USER_CHOICE -eq 1 ] ; then
+find . -type f -exec chmod 644 {} \;
+echo "=================="
+echo "All file permissions were successfully changed to 644"
+echo "Here is your proof"
+echo "=================="
+ls -ahl
+elif [ $USER_CHOICE -eq 2 ] ; then
+find . -type d -exec chmod 755 {} \;
+echo "=================="
+echo "All folder permissions were successfully changed to 755"
+echo "Here is your proof"
+echo "=================="
+ls -ahl
+elif [ $USER_CHOICE -eq 3 ] ; then
+find . -type f -exec chmod 644 {} \;
+find . -type d -exec chmod 755 {} \;
+echo "=================="
+echo "All file AND folder permissions were changed successfully"
+echo "Here is your proof"
+echo "=================="
+ls -ahl
+fi

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+echo "==SSH CONNECTION SCRIPT=="
+echo
+echo "SSH KEY used is XXXXX.pub"
+echo
+echo "Tuka slagai SSH key-a"
+echo 
+echo -n "Enter user: "
+read USER
+echo -n "Enter server: "
+read SERVER
+
+#Now we connect
+
+ssh $USER@$SERVER -p 18765
+

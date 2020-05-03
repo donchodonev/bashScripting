@@ -1,0 +1,2 @@
+wp plugin list --status=active --field=name > pluginlist && while read line; do wp plugin deactivate "$line" ; read </dev/tty ; done < pluginlist
+
